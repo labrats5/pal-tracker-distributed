@@ -1,8 +1,10 @@
 applications:
 - name: tracker-registration
   path: ./applications/registration-server/build/libs/registration-server.jar
-  host: registration-pal-INITIALS
+  host: registration-pal-mjc
   memory: 1G
   instances: 1
+  env:
+    REGISTRATION_SERVER_ENDPOINT: http://registration-pal-mjc.api.system.cumuluslabs.io
   services:
   - tracker-registration-database
