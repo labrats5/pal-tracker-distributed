@@ -22,7 +22,7 @@ class CfMigrationPlugin implements Plugin<Project> {
                     doLast {
                         println "Opening Tunnel for $appName"
                         Thread.start {
-                            tunnelProcess = "cf ssh -N -L 63306:${getMysqlHost(appName)}:3306 $appName".execute()
+                            tunnelProcess = "cf ssh -N -L 63307:${getMysqlHost(appName)}:3306 $appName".execute()
                         }
                         sleep 5_000L
                     }
@@ -62,7 +62,7 @@ class CfMigrationPlugin implements Plugin<Project> {
 
             extension.user = credentials["username"]
             extension.password = credentials["password"]
-            extension.url = "jdbc:mysql://127.0.0.1:63306/${credentials["name"]}"
+            extension.url = "jdbc:mysql://127.0.0.1:63307/${credentials["name"]}"
         }
 
         extension.locations = ["filesystem:$project.projectDir/migrations"]
